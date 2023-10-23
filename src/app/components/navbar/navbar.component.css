@@ -1,0 +1,17 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-button-row button,
+  .example-button-row a {
+    margin-right: 8px;
+  } 
+
+
+
+.home-icon {
+  font-size: 32px; /* Adjust the font size to your desired icon size */
+}
+
+
+

@@ -1,0 +1,67 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-md-6 offset-md-3">
+
+            <mat-card>
+          <div class="container text-center">
+            <img src="../../../assets/logo.png" alt="logo here" width="300" height="90">
+          </div>
+
+          <h1 class="text-center" style="font-weight: bold;">LOGIN</h1>
+          <form [formGroup]="loginForm">
+            <!-- UserName field -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>User Name</mat-label>
+                <input required formControlName="username" matInput placeholder="Enter Valid Username">
+                <mat-error *ngIf="loginForm.get('username').hasError('required')">Username is required</mat-error>
+              </mat-form-field>
+
+               <!-- Password field -->
+            <!-- <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input required formControlName="password" type="password" matInput placeholder="Enter your password">
+                <mat-error *ngIf="loginForm.get('password').hasError('required')">Password is required</mat-error>
+              </mat-form-field> -->
+
+              <!-- Password field from ChatGPT suggestion-->
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input
+                  required
+                  formControlName="password"
+                  [type]="hidePassword ? 'password' : 'text'"
+                  matInput
+                  placeholder="Enter your password"
+                />
+                <!-- Add a button to toggle password visibility -->
+                <button
+                  mat-icon-button
+                  matSuffix
+                  type="button"
+                  (click)="togglePasswordVisibility()"
+                  [attr.aria-label]="hidePassword ? 'Show Password' : 'Hide Password'"
+                >
+                  <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginForm.get('password').hasError('required')">Password is required</mat-error>
+              </mat-form-field>
+              
+
+              <!-- Buttons -->
+            <div class="container text-center">
+                <button mat-raised-button color="primary" (click)="generateTokenAndLogin()">Login</button>
+                <button style="margin-left: 20px;" mat-raised-button color="accent" (click)="resetForm()">Clear</button>
+              </div>
+          </form>
+        </mat-card>
+        </div>
+    </div>
+
+    
+</div>
+</div>
+
+
+
+

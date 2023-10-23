@@ -1,0 +1,97 @@
+
+
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-md-6 offset-md-3">
+
+          <mat-card>
+          <div class="container text-center">
+            <img src="../../../assets/logo.png" alt="logo here" width="300" height="90">
+          </div>
+          <h1 class="text-center" style="font-weight: bold;">SIGN UP</h1>
+  
+          <!-- Use [formGroup] to bind the form group -->
+          <form [formGroup]="signupForm">
+  
+            <!-- UserName field -->
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>User Name</mat-label>
+              <input required formControlName="username" matInput placeholder="Enter Username">
+              <mat-error *ngIf="signupForm.get('username').hasError('required')">Username is required</mat-error>
+              <mat-hint>User name must be unique</mat-hint>
+            </mat-form-field>
+  
+            <!-- Password field -->
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Password</mat-label>
+              <input 
+              required 
+              formControlName="password" 
+              [type]="hidePassword ? 'password' : 'text'" 
+              matInput 
+              placeholder="Enter Password">
+              <!-- Add a button to toggle password visibility -->
+              <button
+              mat-icon-button
+              matSuffix
+              type="button"
+              (click)="togglePasswordVisibility()"
+              [attr.aria-label]="hidePassword ? 'Show Password' : 'Hide Password'"
+            >
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+              <mat-error *ngIf="signupForm.get('password').hasError('required')">Password is required</mat-error>
+            </mat-form-field>
+  
+            <!-- First Name field -->
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input required formControlName="firstname" matInput placeholder="Enter First Name" type="text"
+              pattern="[a-zA-Z ]*">
+              <mat-error *ngIf="signupForm.get('firstname').hasError('required')">Firstname is required</mat-error>
+              <mat-error *ngIf="signupForm.get('firstname').hasError('pattern')">Only letters and spaces are allowed</mat-error>
+            </mat-form-field>
+  
+            <!-- Last Name field -->
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input required formControlName="lastname" matInput placeholder="Enter Last Name" type="text"
+              pattern="[a-zA-Z ]*">
+              <mat-error *ngIf="signupForm.get('lastname').hasError('required')">Lastname is required</mat-error>
+              <mat-error *ngIf="signupForm.get('lastname').hasError('pattern')">Only letters and spaces are allowed</mat-error>
+            </mat-form-field>
+  
+            <!-- Email field -->
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input required formControlName="email" matInput placeholder="Enter email">
+              <mat-error *ngIf="signupForm.get('email').hasError('required')">Email is required</mat-error>
+              <mat-error *ngIf="signupForm.get('email').hasError('email')">Invalid email format</mat-error>
+            </mat-form-field>
+  
+            <!-- Phone No field -->
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Phone No</mat-label>
+              <input required formControlName="phone" matInput placeholder="Enter phone number" ttype="tel"
+              pattern="[0-9]{10}" maxlength="10">
+              <mat-error *ngIf="signupForm.get('phone').hasError('required')">Phone No is required</mat-error>
+              <mat-error *ngIf="signupForm.get('phone').hasError('pattern')">Only numbers are allowed</mat-error>
+              
+            </mat-form-field>
+  
+            <!-- Buttons -->
+            <div class="container text-center">
+              <button mat-raised-button color="primary" (click)="formSubmit()">Register</button>
+              <button style="margin-left: 20px;" mat-raised-button color="accent" (click)="resetForm()">Reset Form</button>
+            </div>
+  
+          </form>
+        </mat-card>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
