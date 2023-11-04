@@ -39,3 +39,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mb20{
     margin-bottom: 20px !important;
 }
+
+.mb10{
+    margin-bottom: 10px !important;
+}
